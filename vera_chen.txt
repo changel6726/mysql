@@ -6,6 +6,14 @@ join employees e on (e.employeeid=o.employeeid)
 group by e.lastname 
 order by total desc limit 3;
 
++-----------+-------------------+
+| ShipCity  | total             |
++-----------+-------------------+
+| Cunewalde | 89416.17488350898 |
+| Graz      |  80338.0583535011 |
+| Boise     | 77828.09986812407 |
++-----------+-------------------+
+
 
 2.業務總銷售額前三名
 
@@ -14,3 +22,11 @@ from orders o join `order details` od on (od.OrderID=o.OrderID)
 join employees e on (e.employeeid=o.employeeid) 
 group by e.lastname 
 order by total desc limit 3;
+
++-----------+--------------------+
+| lastname  | total              |
++-----------+--------------------+
+| Peacock   | 195629.29573612887 |
+| Leverling |  167029.2228513775 |
+| Davolio   | 163989.35437067712 |
++-----------+--------------------+
