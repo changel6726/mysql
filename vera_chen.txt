@@ -1,0 +1,16 @@
+1.地區總銷售額前三名
+
+select e.lastname,sum(od.UnitPrice*od.Quantity) as total 
+from orders o join `order details` od on (od.OrderID=o.OrderID) 
+join employees e on (e.employeeid=o.employeeid) 
+group by e.lastname 
+order by total desc limit 3;
+
+
+2.業務總銷售額前三名
+
+select e.lastname,sum(od.UnitPrice*od.Quantity) as total 
+from orders o join `order details` od on (od.OrderID=o.OrderID) 
+join employees e on (e.employeeid=o.employeeid) 
+group by e.lastname 
+order by total desc limit 3;
