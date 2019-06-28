@@ -1,0 +1,58 @@
+1.每個辦公室的業績狀況
+
+select o.officeCode,sum(ot.quantityOrdered*ot.priceEach) as total
+from offices o join employees e using(officeCode)
+join customers c on (c.salesRepEmployeeNumber=e.employeeNumber)
+join orders od using(customerNumber) 
+join orderdetails ot using(orderNumber) 
+where od.status='shipped' 
+group by o.officeCode;
+
+
+2.業務業績排行 procedure
+
+delimiter %
+
+create procedure sales2(in date1 date,in date2 date)
+begin 
+select c.salesRepEmployeeNumber as id,sum(ot.quantityOrdered*ot.priceEach) as total 
+from orderdetails ot join orders o using(orderNumber) 
+join customers c using(customerNumber) 
+where orderDate between date1 and date2 and o.status='shipped' 
+group by c.salesRepEmployeeNumber 
+order by total desc;
+end%
+
+delimiter ;
+
+**查詢**
+call sales('2003-01-01','2003-12-31');
+
+
+3.熱銷商品排行 procedure
+
+delimiter %
+
+create procedure hot_sales(in date1 date,in date2 date)
+begin 
+select p.productName,sum(ot.quantityOrdered*ot.priceEach) as total 
+from orderdetails ot join products p using(productCode) 
+join orders o using(orderNumber) 
+where orderDate between date1 and date2 and o.status='shipped' 
+group by p.productCode 
+order by total desc;
+end%
+
+delimiter ;
+
+**查詢**
+call hot_sales('2003-01-01','2003-12-31');
+
+4.各業務被取消單的數量 status=Cancelled
+
+select c.salesRepEmployeeNumber as id,count(o.orderNumber) as count 
+from customers c,orders o 
+where c.customerNumber=o.customerNumber and o.status='Cancelled' 
+group by c.salesRepEmployeeNumber 
+order by count desc;
+
