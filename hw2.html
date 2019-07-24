@@ -1,0 +1,141 @@
+<script src="hw2.js"></script>
+
+<input type="button" value="產生身分證" onclick="creat()">
+<span id="result"></span>
+
+
+<script> //指定男女
+    function doing()
+    {
+        let op = document.getElementById('op');
+        let gender = 0;
+        if(op.selectedIndex == 0)
+        {
+            gender = 1;
+            creat2(gender);
+        }
+        else if (op.selectedIndex == 1)               
+        {
+            gender = 2;
+            creat2(gender);
+        }
+    }
+    
+</script>
+
+<hr>
+選擇性別:
+<select id="op">
+    <option>男</option>
+    <option>女</option>
+</select>
+<input type="button" value="產生身分證" onclick="doing()"/>
+<span id="result2"></span>
+
+<script> //指定區域
+    function doing2()
+    {
+        let op = document.getElementById('op2');
+        let op2 = document.getElementById('op2').value;
+        let area = 0;
+        for (let i = 0 ; i<22 ; i++)
+        {
+            if(op.selectedIndex == i)
+            {
+                area = op2.charAt(4);
+                creat3(area);
+                break;
+            }
+        }
+    }
+</script>
+
+<hr>
+選擇區域:
+<select id="op2">
+    <option>臺北市(A)</option>
+    <option>臺中市(B)</option>
+    <option>基隆市(C)</option>
+    <option>臺南市(D)</option>
+    <option>高雄市(E)</option>
+    <option>新北市(F)</option>
+    <option>宜蘭縣(G)</option>
+    <option>桃園市(H)</option>
+    <option>嘉義市(I)</option>
+    <option>新竹縣(J)</option>
+    <option>苗栗縣(K)</option>
+    <option>南投縣(M)</option>
+    <option>彰化縣(N)</option>
+    <option>新竹市(O)</option>
+    <option>雲林縣(P)</option>
+    <option>嘉義縣(Q)</option>
+    <option>屏東縣(T)</option>
+    <option>花蓮縣(U)</option>
+    <option>臺東縣(V)</option>
+    <option>金門縣(W)</option>
+    <option>澎湖縣(X)</option>
+    <option>連江縣(Z)</option>
+</select>
+<input type="button" value="產生身分證" onclick="doing2()"/>
+<span id="result3"></span>
+
+<script> //指定男女.區域
+    function doing3()
+    {
+        let op = document.getElementById('op3');
+        let op2 = document.getElementById('op4');
+        let op3 = document.getElementById('op4').value;
+        let gender2 = 0;
+        let area2 = 0;
+        for (let i = 0 ; i<22 ; i++)
+        {
+            if(op.selectedIndex == 0 && op2.selectedIndex == i)
+            {
+                gender2 = 1;
+                area2 = op3.charAt(4);
+                creat4(gender2,area2);
+                break;
+            }
+            else(op.selectedIndex == 1 && op2.selectedIndex == i)
+            {
+                gender2 = 2;
+                area2 = op3.charAt(4);
+                creat4(gender2,area2);
+            }
+        }
+    }
+    
+</script>
+
+<hr>
+選擇性別:
+<select id="op3">
+    <option>男</option>
+    <option>女</option>
+</select>
+<select id="op4">
+    <option>臺北市(A)</option>
+    <option>臺中市(B)</option>
+    <option>基隆市(C)</option>
+    <option>臺南市(D)</option>
+    <option>高雄市(E)</option>
+    <option>新北市(F)</option>
+    <option>宜蘭縣(G)</option>
+    <option>桃園市(H)</option>
+    <option>嘉義市(I)</option>
+    <option>新竹縣(J)</option>
+    <option>苗栗縣(K)</option>
+    <option>南投縣(M)</option>
+    <option>彰化縣(N)</option>
+    <option>新竹市(O)</option>
+    <option>雲林縣(P)</option>
+    <option>嘉義縣(Q)</option>
+    <option>屏東縣(T)</option>
+    <option>花蓮縣(U)</option>
+    <option>臺東縣(V)</option>
+    <option>金門縣(W)</option>
+    <option>澎湖縣(X)</option>
+    <option>連江縣(Z)</option>
+</select>
+<input type="button" value="產生身分證" onclick="doing3()"/>
+<span id="result4"></span>
